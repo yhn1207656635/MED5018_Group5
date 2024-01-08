@@ -1,0 +1,103 @@
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.decomposition import PCA
+df = pd.read_csv('CVD_cleaned.csv')
+
+# 读取数据，对数据进行简单的处理
+df['General_Health_num'] = df['General_Health'].replace({'Poor': 0, 'Fair': 1, 'Good': 2, 'Very Good': 3, 'Excellent': 4})
+df['Diabetes'] = df['Diabetes'].replace({'No': 0, 'Yes': 1, 'Yes, but female told only during pregnancy': 1, 'No, pre-diabetes or borderline diabetes': 0})
+df['Age_Category'] = df['Age_Category'].str[:2]
+
+# 将水果消费和蔬菜消费统一成健康消费
+df['Healthy_Consumption'] = df['Fruit_Consumption'] + df['Green_Vegetables_Consumption']
+df
+# 将分类变量转换为数值
+label_encoder = LabelEncoder()
+df['General_Health_num'] = label_encoder.fit_transform(df['General_Health_num'])
+df['Checkup'] = label_encoder.fit_transform(df['Checkup'])
+df['Exercise'] = label_encoder.fit_transform(df['Exercise'])
+df['Skin_Cancer'] = label_encoder.fit_transform(df['Skin_Cancer'])
+df['Other_Cancer'] = label_encoder.fit_transform(df['Other_Cancer'])
+df['Depression'] = label_encoder.fit_transform(df['Depression'])
+df['Diabetes'] = label_encoder.fit_transform(df['Diabetes'])
+df['Sex'] = label_encoder.fit_transform(df['Sex'])
+df['Age_Category'] = label_encoder.fit_transform(df['Age_Category'])
+df['Arthritis'] = label_encoder.fit_transform(df['Arthritis'])
+df['Smoking_History'] = label_encoder.fit_transform(df['Smoking_History'])
+df
+# 提取炸土豆消费和健康食物消费这两大关键的人为习惯因素进行聚类，观察聚类结果和心血管疾病的关系
+features = df[['FriedPotato_Consumption', 'Healthy_Consumption']]
+
+# 标准化数据
+features_standardized = (features - features.mean()) / features.std()
+
+# 进行聚类
+kmeans = KMeans(n_clusters=3, random_state=42)
+df['Cluster1'] = kmeans.fit_predict(features_standardized)
+
+# 绘制散点图查看聚类结果
+sns.scatterplot(x='Healthy_Consumption', y='FriedPotato_Consumption', hue='Cluster1', data=df, palette='Set1')
+
+plt.title('Clustering Results_1_1')
+plt.savefig('Healthy_Consumption_FriedPotato_Consumption_Cluster.png')
+plt.show()
+# 绘制散点图查看心血管疾病和两种人为习惯因素的关系，与分类结果的图作比对
+sns.scatterplot(x='Healthy_Consumption', y='FriedPotato_Consumption', hue='Heart_Disease', data=df, palette='Set1')
+
+plt.title('Clustering Results_1_2')
+plt.savefig('Healthy_Consumption_FriedPotato_Consumption_Heart_Disease.png')
+plt.show()
+# 提取运动、年龄、体检和健康状态这四种健康因素进行聚类，再进行降维，观察聚类结果和心血管疾病的关系
+features = df[['Exercise', 'Age_Category', 'Checkup', 'General_Health_num']]
+
+# 标准化数据
+features_standardized = (features - features.mean()) / features.std()
+
+# 进行聚类
+kmeans = KMeans(n_clusters=3, random_state=42)
+df['Cluster2'] = kmeans.fit_predict(features_standardized)
+
+# 降维至2维
+pca = PCA(n_components=2)
+reduced_features = pca.fit_transform(features_standardized)
+
+# 添加降维后的两个维度到DataFrame
+df['PCA1'] = reduced_features[:, 0]
+df['PCA2'] = reduced_features[:, 1]
+
+# 绘制散点图查看降维后的分类结果
+sns.scatterplot(x='PCA1', y='PCA2', hue='Cluster2', data=df, palette='Set1')
+plt.title('Clustering Results_2_1')
+plt.savefig('PCA1_PCA2_Cluster.png')
+plt.show()
+# 绘制散点图查看心血管疾病和降维后的数据的关系，与聚类结果作比较
+sns.scatterplot(x='PCA1', y='PCA2', hue='Heart_Disease', data=df, palette='Set1')
+
+plt.title('Clustering Results_2_2')
+plt.savefig('PCA1_PCA2_Heart_Disease.png')
+plt.show()
+# 提取BMI、健康状态和糖尿病三种特征列进行聚类，观察三种特征聚类结果
+features = df[['BMI', 'General_Health_num', 'Diabetes']]
+
+# 标准化数据
+features_standardized = (features - features.mean()) / features.std()
+
+# 进行聚类
+kmeans = KMeans(n_clusters=3, random_state=42)
+df['Cluster3'] = kmeans.fit_predict(features_standardized)
+
+# 绘制散点图查看聚类结果
+sns.scatterplot(x='Diabetes', y='BMI', hue='Cluster3', data=df, palette='Set1')
+
+plt.title('Clustering Results_3_1')
+plt.savefig('Diabetes_BMI_cluster.png')
+plt.show()
+# 绘制散点图查看健康状态与BMI和糖尿病三者之间的关系，与聚类结果作比较
+sns.scatterplot(x='Diabetes', y='BMI', hue='General_Health', data=df, palette='Set1')
+
+plt.title('Clustering Results_3_2')
+plt.savefig('Diabetes_BMI_General_Health.png')
+plt.show()
