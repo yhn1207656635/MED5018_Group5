@@ -6,7 +6,15 @@ This repository contains the final project of Group 5 for the MED5018 course at 
 The project aims to investigate the relationship between cardiovascular disease and individual lifestyle factors. The findings are presented through data analysis and visualization methods. Two main research directions were chosen: analyzing the correlation between cardiovascular disease and demographic factors, and exploring the relationship between cardiovascular disease and health factors. The team also employed cluster analysis to identify key factors influencing cardiovascular disease.
 
 
-## Project Overview
+## Dependencies
+- pandas
+- numpy
+- matplotlib.pyplot
+- seaborn
+- math
+- sklearn.preprocessing.LabelEncoder
+- sklearn.cluster.KMeans
+- sklearn.decomposition.PCA
 
 ## Key Findings
 The project yielded several important findings:
