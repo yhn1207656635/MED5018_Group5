@@ -29,5 +29,12 @@ Population clustering using exercise, age, checkup, and general health factors, 
 
 ## Visualizations
 Here are some visualizations showcasing the project findings (insert image links or use markdown to embed images).
+1. ![Alcohol Consumption](https://github.com/yhn1207656635/MED5018_Group5/blob/main/assets/Alcohol%20Consumption.png?raw=true)
+2. ![Comparison of patients with disease conditions](https://github.com/yhn1207656635/MED5018_Group5/blob/main/assets/Comparison%20of%20patients%20with%20disease%20conditions.png?raw=true)
+3. ![Diabetes BMI General Health](https://github.com/yhn1207656635/MED5018_Group5/blob/main/assets/Diabetes_BMI_General_Health.png?raw=true)
+4. ![General Health Heart](https://github.com/yhn1207656635/MED5018_Group5/blob/main/assets/general_health_heart.png?raw=true)
+5. ![Correlation Heatmap](https://github.com/yhn1207656635/MED5018_Group5/blob/main/assets/corr_all.png?raw=true)
+6. ![Health Heart Pie Chart](https://github.com/yhn1207656635/MED5018_Group5/blob/main/assets/health_heart_pie.png?raw=true)
+
 
 
