@@ -1,0 +1,15 @@
+Completed by Chen Xiyue.
+Extended from direction 1 to explore the relationship between cardiovascular disease and different health factors (overall health, checkups, exercise, heart disease, skin cancer, depression, diabetes, arthritis) with significant influences from age and gender.
+Visualization:
+Gender Proportion in Different Age Groups:
+Pie Chart: Compare the gender distribution in different age groups.
+Overall Health:
+Bar Chart: Use a bar chart to compare the frequency of cardiovascular disease based on overall health, considering different ages and genders.
+Checkups:
+Bar Chart: Display the proportion of patients undergoing regular checkups based on different ages and genders.
+Exercise:
+Pie Chart: Show the relative proportion of exercise frequency among cardiovascular disease patients considering different ages and genders.
+Heart Disease, Skin Cancer, Other Cancers, Depression, Diabetes, Arthritis:
+Heatmap: Illustrate the relationship between different diseases and gender.
+Heatmap: Illustrate the relationship between different diseases and age.
+Heatmap: Illustrate the correlation between different diseases, gender, and age.
