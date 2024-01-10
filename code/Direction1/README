@@ -1,17 +1,2 @@
 Completed by Liu Yuchen.
 Explored the relationship between cardiovascular disease and population factors (gender, age categories, BMI, smoking history, alcohol consumption, fruit consumption).
-Visualizations include:
-Gender:
-Pie Chart: Display the relative proportion of male and female genders among cardiovascular disease patients.
-Age Categories:
-Bar Chart: Show the distribution of cardiovascular disease patients in different age categories.
-Body Mass Index (BMI):
-Boxplot: Display the BMI distribution of cardiovascular disease patients, possibly segmented by gender or age.
-Smoking History:
-Bar Chart: Show the proportion of smokers and non-smokers among cardiovascular disease patients.
-Alcohol Consumption:
-Scatter Plot: Observe the relationship between alcohol consumption and overall health among cardiovascular disease patients.
-Comparison of Patients with Disease Conditions:
-Radar Chart: Compare the coexistence of other diseases among cardiovascular disease patients.
-Height and Weight Distribution by Age:
-Scatter Plot: Observe the distribution of height and weight among cardiovascular disease patients in different age ranges.
